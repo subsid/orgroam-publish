@@ -99,6 +99,46 @@ Content here...
 | `sitemapignore` | Publish but exclude from sitemap            |
 | `notitle`       | Suppress the `<h1>` title in exported HTML  |
 
+Tags can be combined: `#+TAGS: publish notitle sitemapignore`
+
+### Export Options
+
+Control HTML export behavior with `#+options:`:
+
+```org
+#+options: toc:nil          # Disable table of contents
+#+options: num:nil          # Disable section numbering
+#+options: toc:nil num:nil  # Combine multiple options
+```
+
+### File Organization
+
+Use `#+filetags:` to categorize content (affects sitemap organization):
+
+```org
+#+filetags: Reference  # Reference material
+#+filetags: Main       # Short notes
+```
+
+### Complete Example
+
+```org
+:PROPERTIES:
+:ID:       ba2be672-571a-4640-8a0a-665f31ed924b
+:END:
+#+title: Links
+#+category: Links
+#+filetags: Reference
+#+export_file_name: useful-links
+#+options: toc:nil
+#+tags: notitle publish
+#+date: <2024-05-19 Sun>
+
+Quick links I can ctrl-f to.
+
+- [[https://example.com][Example Link]]
+```
+
 ### Directory Structure
 
 Organize your org files:

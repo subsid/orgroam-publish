@@ -4,6 +4,33 @@
 # Usage: ./serve.sh [private] [port]
 # Default port is 8000
 
+# Show help message
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    cat << EOF
+Usage: serve.sh [BLOG_TYPE] [PORT]
+
+Start a local HTTP server to preview your blog.
+
+ARGUMENTS:
+  BLOG_TYPE     Which blog to serve: 'private' or omit for public (default: public)
+  PORT          Port number to serve on (default: 8000)
+
+OPTIONS:
+  -h, --help    Show this help message
+
+EXAMPLES:
+  ./scripts/serve.sh              # Serve public blog on port 8000
+  ./scripts/serve.sh private      # Serve private blog on port 8000
+  ./scripts/serve.sh public 3000  # Serve public blog on port 3000
+  ./scripts/serve.sh private 3000 # Serve private blog on port 3000
+
+NOTE:
+  Make sure to run build.sh before serving.
+  Press Ctrl+C to stop the server.
+EOF
+    exit 0
+fi
+
 PORT=${2:-8000}
 
 if [ "$1" = "private" ]; then

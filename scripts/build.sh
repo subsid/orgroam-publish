@@ -4,6 +4,33 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GENERATOR_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# Show help message
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    cat << EOF
+Usage: build.sh [MODE]
+
+Build your org-roam blog from org files to HTML.
+
+MODES:
+  (none)        Full rebuild - cleans output directories and rebuilds all files
+  watch         Watch for changes and rebuild incrementally
+  incremental   Incremental build (internal use by watch mode)
+
+OPTIONS:
+  -h, --help    Show this help message
+
+EXAMPLES:
+  ./scripts/build.sh              # Full rebuild
+  ./scripts/build.sh watch        # Watch mode with auto-rebuild
+
+NOTE:
+  - Full rebuilds clean public/ and private/ directories
+  - Watch mode only rebuilds changed files (faster)
+  - Sitemap changes require a full rebuild
+EOF
+    exit 0
+fi
+
 if [ "$1" = "watch" ]; then
     # Extract org pages directory from site-config.el
     if [ -f "./site-config.el" ]; then
