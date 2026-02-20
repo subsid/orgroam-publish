@@ -1,0 +1,14 @@
+# Build outputs
+public/
+private/
+
+# Emacs packages
+.packages/
+
+# Org publish cache
+.org-timestamps/
+
+# Editor files
+*~
+\#*\#
+.\#*

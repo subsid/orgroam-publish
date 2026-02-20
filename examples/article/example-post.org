@@ -1,0 +1,20 @@
+#+TITLE: Example Blog Post
+#+DATE: <2024-01-15>
+#+TAGS: publish
+
+This is an example blog post showing how to write content.
+
+* Section 1
+
+Content goes here.
+
+** Subsection
+
+More content.
+
+* Code Example
+
+#+begin_src python
+def hello_world():
+    print("Hello, World!")
+#+end_src

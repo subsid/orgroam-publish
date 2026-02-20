@@ -1,0 +1,11 @@
+#+TITLE: Example Note
+#+DATE: <2024-01-10>
+#+TAGS: publish
+
+This is an example note.
+
+* Key Points
+
+- Point one
+- Point two
+- Point three
