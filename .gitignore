@@ -1,6 +1,7 @@
 # Build outputs
 public/
 private/
+test-output/
 
 # Emacs packages
 .packages/
