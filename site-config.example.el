@@ -1,8 +1,11 @@
 ;; Example site-config.el - Copy this to your blog repository root
 ;; This file demonstrates how to customize orgroam-publish for your site
 
-;; Point to your org-roam directory
+;; ============================================================================
+;; Required: Point to your org-roam directory
+;; ============================================================================
 ;; This is the most important setting - where your org files live
+;; Note: You can also use ORG_PAGES_DIR environment variable to override temporarily
 (setq my-org-pages-dir 
   (expand-file-name "~/path/to/your/org-roam/pages"))
 

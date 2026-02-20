@@ -27,12 +27,14 @@
     "Path to the generator directory."))
 
 ;; Source directory for org files.
-;; Override by setting the ORG_PAGES_DIR environment variable or in site-config.el.
+;; Priority: 1) ORG_PAGES_DIR env var (for testing), 2) site-config.el override, 3) test fixtures
 (defvar my-org-pages-dir
   (expand-file-name
    (or (getenv "ORG_PAGES_DIR")
        (expand-file-name "test/fixtures/pages" generator-dir)))
-  "Root directory containing org source files (article/, main/, reference/).")
+  "Root directory containing org source files (article/, main/, reference/).
+Set this in site-config.el for your blog.
+Environment variable ORG_PAGES_DIR can override for testing.")
 
 ;; Define default preambles - override in site-config.el for customization
 (defvar my-site-preamble
