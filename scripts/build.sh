@@ -5,9 +5,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GENERATOR_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 if [ "$1" = "watch" ]; then
-    echo "Watching for changes in ~/Dropbox/notes/org_roam_v2/pages/{article,main,reference}/..."
-    find ~/Dropbox/notes/org_roam_v2/pages/{article,main,reference} -name "*.org" \
-        -not -name "notes.org" -not -name "references.org" -not -name "private.org" -not -name "sitemap.org" | \
+    # Get the org pages directory from environment or use default
+    ORG_DIR="${ORG_PAGES_DIR:-./test/fixtures/pages}"
+    echo "Watching for changes in $ORG_DIR/{article,main,reference}/..."
+    find "$ORG_DIR"/{article,main,reference} -name "*.org" \
+        -not -name "notes.org" -not -name "references.org" -not -name "private.org" -not -name "sitemap.org" 2>/dev/null | \
         entr -n -s './scripts/build.sh incremental "$0"'
 elif [ "$1" = "incremental" ]; then
     CHANGED_FILE="${*:2}"

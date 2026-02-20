@@ -33,7 +33,7 @@ Create a `site-config.el` in your blog repository root:
 ;; site-config.el - Your site-specific configuration
 
 ;; Point to your org files
-(setq my-org-pages-dir (expand-file-name "~/Dropbox/notes/org_roam_v2/pages"))
+(setq my-org-pages-dir (expand-file-name "~/path/to/your/org-roam/pages"))
 
 ;; Customize your navigation
 (setq my-site-preamble
@@ -45,6 +45,7 @@ Create a `site-config.el` in your blog repository root:
 </div>")
 
 ;; Override any other variables as needed
+;; See site-config.example.el for more options
 ```
 
 ### 3. Create Wrapper Scripts
