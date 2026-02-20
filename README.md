@@ -18,9 +18,10 @@ A static site generator for org-roam notes that creates both public and private 
 ```bash
 # Clone the repository
 git clone https://github.com/subsid/orgroam-publish.git
-cd orgroam-publish/example_website
+cd orgroam-publish
 
-# Build and serve
+# Build and serve the example
+cd example_website
 ../scripts/build.sh
 ../scripts/serve.sh
 # Open http://localhost:8000
