@@ -53,15 +53,20 @@ Respects :exclude patterns defined on the project."
           (funcall pub-fn plist file pub-dir)
           (org-publish-write-cache-file))))))
 
-;; Publish only the changed file
+;; Publish only the changed file and regenerate sitemaps
 (when (boundp 'changed-file)
   (message "Publishing single file: %s" changed-file)
 
+  ;; Publish the file to all relevant projects
   (dolist (project-name '("my-org-notes"
                            "my-org-references"
                            "my-private-notes"
                            "my-private-references"
                            "my-private-blog-content"))
-    (my/publish-file-to-project changed-file project-name)))
+    (my/publish-file-to-project changed-file project-name))
+  
+  ;; Note: Sitemaps are not regenerated in incremental mode
+  ;; Run a full build to update sitemaps (./scripts/build.sh)
+  (message "Note: Sitemaps not updated (run full build to refresh sitemap)"))
 
 (message "Incremental build complete!")
