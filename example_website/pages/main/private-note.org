@@ -1,0 +1,19 @@
+#+TITLE: Private Note (Not Published)
+#+EXPORT_FILE_NAME: private-note
+#+DATE: <2024-01-12>
+
+This note doesn't have the =publish= tag, so it only appears in the private blog.
+
+* Private Content
+
+This is useful for:
+- Drafts
+- Personal notes
+- Work-in-progress
+- Private references
+
+You can view this at =http://localhost:8000/private.html= when serving the private blog with:
+
+#+begin_example
+../scripts/serve.sh private
+#+end_example

@@ -26,15 +26,20 @@
     (file-name-directory (directory-file-name (file-name-directory load-file-name)))
     "Path to the generator directory."))
 
-;; Source directory for org files.
-;; Priority: 1) ORG_PAGES_DIR env var (for testing), 2) site-config.el override, 3) test fixtures
-(defvar my-org-pages-dir
-  (expand-file-name
-   (or (getenv "ORG_PAGES_DIR")
-       (expand-file-name "test/fixtures/pages" generator-dir)))
+;; Load site-specific configuration FIRST (before defining defaults)
+(when (file-exists-p "./site-config.el")
+  (load-file "./site-config.el"))
+
+;; Source directory for org files - set in site-config.el
+;; This will be overridden by site-config.el if it exists
+(defvar my-org-pages-dir nil
   "Root directory containing org source files (article/, main/, reference/).
-Set this in site-config.el for your blog.
-Environment variable ORG_PAGES_DIR can override for testing.")
+Set this in site-config.el to point to your org-roam pages directory.")
+
+;; Set default if not configured
+(unless my-org-pages-dir
+  (setq my-org-pages-dir
+        (expand-file-name "test/fixtures/pages" generator-dir)))
 
 ;; Define default preambles - override in site-config.el for customization
 (defvar my-site-preamble
@@ -404,7 +409,3 @@ If PINNED is a string, any entry whose link contains PINNED is moved to the fron
 (setq org-publish-cache nil)
 (when (file-exists-p org-publish-timestamp-directory)
   (delete-directory org-publish-timestamp-directory t))
-
-;; Load site-specific configuration if it exists
-(when (file-exists-p "./site-config.el")
-  (load-file "./site-config.el"))

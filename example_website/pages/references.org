@@ -1,0 +1,6 @@
+#+TITLE: References
+
+Reference materials and resources.
+
+- [[file:reference/useful-links.html][Useful Links]] /2024-01-05/
+- [[file:about.html][About]] /2026-02-19/

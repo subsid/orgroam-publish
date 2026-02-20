@@ -1,0 +1,8 @@
+#+TITLE: Notes
+
+A collection of notes, articles, and snippets.
+
+- [[file:about.html][About]] /2026-02-19/
+- [[file:main/example-note.html][Example Note]] /2024-01-10/
+- [[file:article/example-post.html][Example Blog Post]] /2024-01-15/
+- [[file:article/getting-started.html][Getting Started with orgroam-publish]] /2024-01-01/

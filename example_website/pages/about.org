@@ -1,0 +1,21 @@
+#+TITLE: About
+#+TAGS: publish
+#+EXPORT_FILE_NAME: about
+
+Welcome to this example blog built with [[https://github.com/subsid/orgroam-publish][orgroam-publish]]!
+
+This is a static site generator for org-roam notes. It creates both public and private versions of your blog.
+
+* Features
+
+- Tag-based publishing
+- Dual blog system (public + private)
+- Incremental builds
+- Watch mode
+- Simple configuration
+
+* How It Works
+
+Files tagged with =publish= appear on the public blog. Everything else goes to the private blog only.
+
+See the [[file:getting-started.org][Getting Started]] guide to learn more.

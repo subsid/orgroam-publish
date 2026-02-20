@@ -1,0 +1,53 @@
+#+TITLE: Example Blog Post
+#+TAGS: publish
+#+EXPORT_FILE_NAME: example-post
+#+DATE: <2024-01-15>
+
+This is an example blog post showing various org-mode features.
+
+* Introduction
+
+You can write in plain org-mode and it converts to clean HTML.
+
+* Code Examples
+
+#+begin_src python
+def hello_world():
+    print("Hello, World!")
+    return 42
+#+end_src
+
+* Lists
+
+** Unordered
+
+- First item
+- Second item
+  - Nested item
+- Third item
+
+** Ordered
+
+1. Step one
+2. Step two
+3. Step three
+
+* Links
+
+- External: [[https://orgmode.org][Org Mode]]
+- Internal: [[file:getting-started.org][Getting Started Guide]]
+
+* Emphasis
+
+You can use *bold*, /italic/, =code=, and ~verbatim~ text.
+
+* Quotes
+
+#+begin_quote
+The best way to predict the future is to invent it.
+— Alan Kay
+#+end_quote
+
+* Conclusion
+
+This example shows the basics. Check the [[https://orgmode.org][org-mode manual]] for more features!

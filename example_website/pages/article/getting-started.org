@@ -1,0 +1,43 @@
+#+TITLE: Getting Started with orgroam-publish
+#+TAGS: publish
+#+EXPORT_FILE_NAME: getting-started
+#+DATE: <2024-01-01>
+
+This guide shows you how to set up your own blog with orgroam-publish.
+
+* Quick Start
+
+1. Copy the =example_website/= directory
+2. Edit =site-config.el= to point to your org files
+3. Run =../scripts/build.sh=
+4. View at =http://localhost:8000= with =../scripts/serve.sh=
+
+* Publishing Tags
+
+Control what gets published with org-mode tags:
+
+- =#+TAGS: publish= — Include in public blog
+- =#+TAGS: sitemapignore= — Publish but exclude from sitemap
+- =#+TAGS: notitle= — Suppress the title heading
+
+* Directory Structure
+
+Your org files should be organized:
+
+#+begin_example
+pages/
+├── article/    # Long-form posts
+├── main/       # Short notes
+└── reference/  # Links and snippets
+#+end_example
+
+* Customization
+
+Edit =site-config.el= to customize:
+
+- Source directory
+- Navigation menu
+- CSS/JS includes
+- Exclude patterns
+
+See =site-config.el= for examples.

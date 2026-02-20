@@ -9,8 +9,13 @@ cd "$GENERATOR_DIR"
 echo "Running orgroam-publish test suite..."
 echo
 
-# Set up test environment
-export ORG_PAGES_DIR="$GENERATOR_DIR/test/fixtures/pages"
+# Create temporary site-config.el for testing
+cat > site-config.el <<EOF
+;; Temporary test configuration
+(setq my-org-pages-dir 
+  (expand-file-name "test/fixtures/pages" 
+    (file-name-directory load-file-name)))
+EOF
 
 # Clean any previous test output
 rm -rf ./public ./private
@@ -55,6 +60,6 @@ echo "✅ All tests passed!"
 echo
 echo "Test output in: $GENERATOR_DIR/public/ and $GENERATOR_DIR/private/"
 
-# Clean up test output
+# Clean up test output and config
 echo "Cleaning up test output..."
-rm -rf ./public ./private
+rm -rf ./public ./private ./site-config.el

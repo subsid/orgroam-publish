@@ -1,0 +1,24 @@
+#+TITLE: Useful Links
+#+TAGS: publish
+#+EXPORT_FILE_NAME: useful-links
+#+DATE: <2024-01-05>
+
+A collection of useful resources.
+
+* Org Mode
+
+- [[https://orgmode.org][Official Org Mode Site]]
+- [[https://orgmode.org/manual/][Org Mode Manual]]
+- [[https://www.orgroam.com/][Org Roam]]
+
+* Static Site Generators
+
+- [[https://github.com/subsid/orgroam-publish][orgroam-publish]] (this generator!)
+- [[https://gohugo.io][Hugo]]
+- [[https://jekyllrb.com][Jekyll]]
+
+* Emacs
+
+- [[https://www.gnu.org/software/emacs/][GNU Emacs]]
+- [[https://systemcrafters.net][System Crafters]]
+- [[https://protesilaos.com][Protesilaos Stavrou]]

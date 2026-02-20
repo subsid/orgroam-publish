@@ -1,0 +1,22 @@
+#+TITLE: Example Note
+#+TAGS: publish
+#+EXPORT_FILE_NAME: example-note
+#+DATE: <2024-01-10>
+
+This is a short note (from the =main/= directory).
+
+Notes are typically:
+- Shorter than articles
+- More informal
+- Quick thoughts or references
+
+* Key Points
+
+- Point one
+- Point two
+- Point three
+
+* See Also
+
+- [[file:../article/example-post.org][Example Blog Post]]
+- [[file:../reference/useful-links.org][Useful Links]]
