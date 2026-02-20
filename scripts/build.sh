@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Determine the script directory and generator directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+GENERATOR_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 if [ "$1" = "watch" ]; then
     echo "Watching for changes in ~/Dropbox/notes/org_roam_v2/pages/{article,main,reference}/..."
     find ~/Dropbox/notes/org_roam_v2/pages/{article,main,reference} -name "*.org" \
@@ -9,7 +13,7 @@ elif [ "$1" = "incremental" ]; then
     CHANGED_FILE="${*:2}"
     if [ -n "$CHANGED_FILE" ]; then
         echo "Incrementally building changed file: $CHANGED_FILE"
-        emacs -Q --batch --eval "(setq changed-file \"$CHANGED_FILE\")" -l ./src/incremental-build.el
+        emacs -Q --batch --eval "(setq changed-file \"$CHANGED_FILE\")" -l "$GENERATOR_DIR/src/incremental-build.el"
         echo "Incremental build complete!"
     else
         echo "No file specified for incremental build"
@@ -18,6 +22,6 @@ else
     echo "Cleaning public/ and private/ directories..."
     rm -rf ./public/* ./private/*
     echo "Building site (full rebuild)..."
-    emacs -Q --script ./src/build-site.el
+    emacs -Q --script "$GENERATOR_DIR/src/build-site.el"
     echo "Build complete!"
 fi

@@ -1,6 +1,11 @@
 ;; Incremental build script - only publishes a single changed file
 ;; Usage: emacs -Q --batch --eval "(setq changed-file \"/path/to/file.org\")" -l incremental-build.el
 
+;; Determine the generator directory
+(defvar generator-dir
+  (file-name-directory (directory-file-name (file-name-directory load-file-name)))
+  "Path to the generator directory.")
+
 (require 'package)
 (setq package-user-dir (expand-file-name "./.packages"))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -16,7 +21,7 @@
 (require 'ox-publish)
 
 ;; Load the configuration (but not the build commands)
-(load-file "./src/build-site-config.el")
+(load-file (expand-file-name "src/build-site-config.el" generator-dir))
 
 ;; Publish a file into a specific named project by temporarily making it the
 ;; only project, so org-publish-file matches and publishes it correctly.
