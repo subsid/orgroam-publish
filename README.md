@@ -1,6 +1,6 @@
-# Org Blog Generator
+# orgroam-publish
 
-A flexible static site generator for org-mode that creates both public and private blogs from org-roam or regular org files.
+A flexible static site generator for org-roam notes that creates both public and private blogs. Works with org-roam or regular org-mode files.
 
 ## Features
 
@@ -18,11 +18,11 @@ A flexible static site generator for org-mode that creates both public and priva
 
 ```bash
 # Clone this generator (or add as submodule to your blog repo)
-git clone https://github.com/yourusername/org-blog-generator.git
+git clone https://github.com/subsid/orgroam-publish.git
 
 # Or as a submodule in your blog repository
 cd your-blog-repo
-git submodule add https://github.com/yourusername/org-blog-generator.git generator
+git submodule add https://github.com/subsid/orgroam-publish.git generator
 ```
 
 ### 2. Configure Your Site
