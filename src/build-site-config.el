@@ -20,11 +20,18 @@
 ;; Configurable Variables - Override these in your site-config.el
 ;; ============================================================================
 
+;; Determine generator directory (when loaded from build-site.el, generator-dir is already set)
+(unless (boundp 'generator-dir)
+  (defvar generator-dir
+    (file-name-directory (directory-file-name (file-name-directory load-file-name)))
+    "Path to the generator directory."))
+
 ;; Source directory for org files.
 ;; Override by setting the ORG_PAGES_DIR environment variable or in site-config.el.
 (defvar my-org-pages-dir
   (expand-file-name
-   (or (getenv "ORG_PAGES_DIR") "./test/fixtures/pages"))
+   (or (getenv "ORG_PAGES_DIR")
+       (expand-file-name "test/fixtures/pages" generator-dir)))
   "Root directory containing org source files (article/, main/, reference/).")
 
 ;; Define default preambles - override in site-config.el for customization
