@@ -5,12 +5,16 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GENERATOR_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 if [ "$1" = "watch" ]; then
-    # Note: Watch mode requires site-config.el to define my-org-pages-dir
-    # For now, watching the current directory structure
-    # TODO: Extract org pages dir from site-config.el
-    echo "Watching for changes (requires rebuild to detect which directory to watch)..."
-    echo "For now, watching common patterns in current directory and subdirectories"
-    find . -name "*.org" -path "*/pages/*" \
+    # Extract org pages directory from site-config.el
+    if [ -f "./site-config.el" ]; then
+        ORG_DIR=$(emacs --batch --eval "(progn (load-file \"./site-config.el\") (princ (expand-file-name my-org-pages-dir)))" 2>/dev/null)
+    else
+        # Default to test fixtures if no config
+        ORG_DIR="$GENERATOR_DIR/test/fixtures/pages"
+    fi
+    
+    echo "Watching for changes in $ORG_DIR/{article,main,reference}..."
+    find "$ORG_DIR"/{article,main,reference} -name "*.org" \
         -not -name "notes.org" -not -name "references.org" -not -name "private.org" -not -name "sitemap.org" 2>/dev/null | \
         entr -n -s './scripts/build.sh incremental "$0"'
 elif [ "$1" = "incremental" ]; then
