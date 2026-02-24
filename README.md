@@ -106,7 +106,7 @@ Tags can be combined: `#+TAGS: publish notitle sitemapignore`
 Control HTML export behavior with `#+options:`:
 
 ```org
-#+options: toc:nil          # Disable table of contents
+#+options: toc:nil          # Disable table of contents (or set to number to control depth)
 #+options: num:nil          # Disable section numbering
 #+options: toc:nil num:nil  # Combine multiple options
 ```
