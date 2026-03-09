@@ -347,21 +347,21 @@ If PINNED is a string, any entry whose link contains PINNED is moved to the fron
 
   ("my-org-static"
    :base-directory "./content/published"
-   :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
+   :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|svg\\|webp\\|pdf\\|mp3\\|ogg\\|swf\\|html"
    :publishing-directory "./public"
    :recursive t
    :publishing-function org-publish-attachment)
 
   ("my-private-blog-static"
    :base-directory "./content/published"
-   :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
+   :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|svg\\|webp\\|pdf\\|mp3\\|ogg\\|swf\\|html"
    :publishing-directory "./private"
    :recursive t
    :publishing-function org-publish-attachment)
 
   ("my-private-unpublished-static"
    :base-directory "./content/unpublished"
-   :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
+   :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|svg\\|webp\\|pdf\\|mp3\\|ogg\\|swf\\|html"
    :publishing-directory "./private"
    :recursive t
    :publishing-function org-publish-attachment)
@@ -404,6 +404,16 @@ If PINNED is a string, any entry whose link contains PINNED is moved to the fron
     html)))
 
 (advice-add 'org-html-src-block :filter-return #'my/org-html-src-block)
+
+(defun my/org-html-fix-relative-links (html)
+  "Rewrite relative static/ paths to absolute /static/ paths in HTML output.
+This ensures links and images work correctly from nested subdirectories."
+  (replace-regexp-in-string
+   "\\(src\\|href\\)=\"static/"
+   "\\1=\"/static/"
+   html))
+
+(advice-add 'org-html-link :filter-return #'my/org-html-fix-relative-links)
 
 ;; Clear the org-publish cache to avoid cache errors
 (setq org-publish-cache nil)
